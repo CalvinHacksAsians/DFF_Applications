@@ -1,7 +1,5 @@
-import { Picker, Button, StyleSheet, Text, View } from 'react-native';
-import React, { Component, useState } from 'react';
-
-
+import { Picker, Button, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
 
 export default function IngredientsScreen({ navigation }) {
     const [protein, setProtein] = useState("");
@@ -14,9 +12,9 @@ export default function IngredientsScreen({ navigation }) {
     const choices = [protein, vegetable01, vegetable02, vegetable03, vegetable04, spice, other];
     return (
         <View>
-            <Text style={styles.header}>This is where you input ingredients!{'\n'}</Text>
-            <Text style={styles.blank}>  </Text>
-            <Text style={styles.protein}>Please pick your protein!{'\n'}</Text>
+            <Text style={ingridientStyles.header}>This is where you input ingredients!{'\n'}</Text>
+            <Text style={ingridientStyles.blank}>  </Text>
+            <Text style={ingridientStyles.protein}>Please pick your protein!{'\n'}</Text>
             <Picker
                 protein={protein}
                 onValueChange={(itemValue, itemIndex) => setProtein(itemValue)}
@@ -32,7 +30,7 @@ export default function IngredientsScreen({ navigation }) {
                 <Picker.Item label="Shrimp" value="Shrimp" />
                 <Picker.Item label="NOT APPLICABLE" value="NULL" />
             </Picker>
-            <Text style={styles.vege}>Please pick your vegetables! (if applicable)</Text>
+            <Text style={ingridientStyles.vege}>Please pick your vegetables! (if applicable)</Text>
             <Picker
                 vegetable01={vegetable01}
                 onValueChange={(itemValue, itemIndex) => setVegetable00(itemValue)}
@@ -151,7 +149,7 @@ export default function IngredientsScreen({ navigation }) {
                 <Picker.Item label="Tomatoes" value="tomatoes" />
                 <Picker.Item label="NOT APPLICABLE" value="NULL" />
             </Picker>
-            <Text style={styles.vege}>Please pick your Spices! (if applicable)</Text>
+            <Text style={ingridientStyles.vege}>Please pick your Spices! (if applicable)</Text>
             <Picker
                 spice={spice}
                 onValueChange={(itemValue, itemIndex) => setSpice(itemValue)}
@@ -170,66 +168,38 @@ export default function IngredientsScreen({ navigation }) {
 
 
             </Picker>
-            <Text style={styles.vege}>Others... (if applicable)</Text>
+            <Text style={ingridientStyles.vege}>Others... (if applicable)</Text>
             <Picker
                 selectedotherValue={other}
                 onValueChange={(itemValue, itemIndex) => setOther(itemValue)}
             >
-                <Picker.Item label="--- select Others ---" value="NULL" />
-                <Picker.Item label="Brandy" value="brandy" />
-                <Picker.Item label="Butter" value="butter" />
-                <Picker.Item label="Chocolate" value="godiva chocolate" />
-                <Picker.Item label="Cocoa Powder" value="cocoa powder" />
-                <Picker.Item label="Cream Cheese" value="cream cheese" />
-                <Picker.Item label="Dark Rum" value="dark rum" />
-                <Picker.Item label="Golden Syrup" value="golden syrup" />
-                <Picker.Item label="Lemon Juice" value="lemon juice" />
-                <Picker.Item label="Pecan" value="pecan" />
-                <Picker.Item label="Pie Shell" value="pie shell" />
-                <Picker.Item label="Tar Tar" value="tar tar" />
-                <Picker.Item label="Vanilla" value="vanilla" />
-                <Picker.Item label="Whipping Cream" value="whipping cream" />
-                <Picker.Item label="White Wine" value="white wine" />
-                <Picker.Item label="NOT APPLICABLE" value="NULL" />
+            <Picker.Item label="--- select Others ---" value="NULL" />
+            <Picker.Item label="Brandy" value="brandy" />
+            <Picker.Item label="Butter" value="butter" />
+            <Picker.Item label="Chocolate" value="godiva chocolate" />
+            <Picker.Item label="Cocoa Powder" value="cocoa powder" />
+            <Picker.Item label="Cream Cheese" value="cream cheese" />
+            <Picker.Item label="Dark Rum" value="dark rum" />
+            <Picker.Item label="Golden Syrup" value="golden syrup" />
+            <Picker.Item label="Lemon Juice" value="lemon juice" />
+            <Picker.Item label="Pecan" value="pecan" />
+            <Picker.Item label="Pie Shell" value="pie shell" />
+            <Picker.Item label="Tar Tar" value="tar tar" />
+            <Picker.Item label="Vanilla" value="vanilla" />
+            <Picker.Item label="Whipping Cream" value="whipping cream" />
+            <Picker.Item label="White Wine" value="white wine" />
+            <Picker.Item label="NOT APPLICABLE" value="NULL" />
             </Picker>
 
+
+            <View style={ingridientStyles.bottom }>
             <Button
-                style={styles.buttonStyle}
-                title="Find possible recipes!"
-                onPress={() => {
-                    navigation.navigate('List');
-                }} />
-        </View>
-    );
+                color = 'black'
+                title = "Find Your Recipe!"
+                onPress={() => { navigation.navigate('List'); }}
+            >
+            </Button>
+            </View>
+        </View>);
+    // };
 }
-
-
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 10,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    header: {
-        fontWeight: 'bold',
-        fontSize: 20,
-    },
-
-    blank: {
-        flex: 10,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    protein: {
-        fontWeight: 'bold',
-        fontSize: 14,
-    },
-    vege: {
-        fontWeight: 'bold',
-        fontSize: 14,
-    },
-
-});
