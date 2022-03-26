@@ -10,7 +10,7 @@ export const globalStyles = StyleSheet.create({
     homeButton: {
         padding: 15,
         position: 'relative',
-        marginTop: '95%',
+        marginTop: '50%',
         width: '100%',
     },
 })
