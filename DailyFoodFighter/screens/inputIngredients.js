@@ -1,21 +1,25 @@
-import { StatusBar, useState } from 'expo-status-bar';
 import { Picker, Button, StyleSheet, Text, View } from 'react-native';
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 
 
 
 export default function IngredientsScreen({ navigation }) {
-    // const App = () => {
-    //     const [selectedValue, setSelectedValue] = useState("java");
+    const [protein, setProtein] = useState("");
+    const [vegetable01, setVegetable00] = useState("");
+    const [vegetable02, setVegetable01] = useState("");
+    const [vegetable03, setVegetable02] = useState("");
+    const [vegetable04, setVegetable03] = useState("");
+    const [spice, setSpice] = useState("");
+    const [other, setOther] = useState("");
+    const choices = [protein, vegetable01, vegetable02, vegetable03, vegetable04, spice, other];
     return (
         <View>
             <Text style={styles.header}>This is where you input ingredients!{'\n'}</Text>
             <Text style={styles.blank}>  </Text>
             <Text style={styles.protein}>Please pick your protein!{'\n'}</Text>
             <Picker
-            // selectedValue={selectedValue}
-
-            // onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+                protein={protein}
+                onValueChange={(itemValue, itemIndex) => setProtein(itemValue)}
             >
                 <Picker.Item label="--- Choose Your Protein ---" value="NULL" />
                 <Picker.Item label="Bacon" value="bacon" />
@@ -27,17 +31,11 @@ export default function IngredientsScreen({ navigation }) {
                 <Picker.Item label="Salmon" value="salmon" />
                 <Picker.Item label="Shrimp" value="Shrimp" />
                 <Picker.Item label="NOT APPLICABLE" value="NULL" />
-
-
-
-
-
             </Picker>
             <Text style={styles.vege}>Please pick your vegetables! (if applicable)</Text>
             <Picker
-            // selectedValue={selectedValue}
-
-            // onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+                vegetable01={vegetable01}
+                onValueChange={(itemValue, itemIndex) => setVegetable00(itemValue)}
             >
                 <Picker.Item label="--- Choose Your Vegetable ---" value="NULL" />
                 <Picker.Item label="Avocado" value="avocado" />
@@ -67,9 +65,8 @@ export default function IngredientsScreen({ navigation }) {
 
             </Picker>
             <Picker
-            // selectedValue={selectedValue}
-
-            // onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+                vegetable02={vegetable02}
+                onValueChange={(itemValue, itemIndex) => setVegetable01(itemValue)}
             >
                 <Picker.Item label="--- Choose Your Vegetable ---" value="NULL" />
                 <Picker.Item label="Avocado" value="avocado" />
@@ -97,9 +94,8 @@ export default function IngredientsScreen({ navigation }) {
                 <Picker.Item label="NOT APPLICABLE" value="NULL" />
             </Picker>
             <Picker
-            // selectedValue={selectedValue}
-
-            // onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+                vegetable03={vegetable03}
+                onValueChange={(itemValue, itemIndex) => setVegetable02(itemValue)}
             >
                 <Picker.Item label="--- Choose Your Vegetable ---" value="NULL" />
                 <Picker.Item label="Avocado" value="avocado" />
@@ -127,9 +123,8 @@ export default function IngredientsScreen({ navigation }) {
                 <Picker.Item label="NOT APPLICABLE" value="NULL" />
             </Picker>
             <Picker
-            // selectedValue={selectedValue}
-
-            // onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+                vegetable04={vegetable04}
+                onValueChange={(itemValue, itemIndex) => setVegetable03(itemValue)}
             >
                 <Picker.Item label="--- Choose Your Vegetable ---" value="NULL" />
                 <Picker.Item label="Avocado" value="avocado" />
@@ -158,9 +153,8 @@ export default function IngredientsScreen({ navigation }) {
             </Picker>
             <Text style={styles.vege}>Please pick your Spices! (if applicable)</Text>
             <Picker
-            // selectedValue={selectedValue}
-
-            // onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+                spice={spice}
+                onValueChange={(itemValue, itemIndex) => setSpice(itemValue)}
             >
                 <Picker.Item label="--- select Spice ---" value="NULL" />
                 <Picker.Item label="Basil" value="basil" />
@@ -178,9 +172,8 @@ export default function IngredientsScreen({ navigation }) {
             </Picker>
             <Text style={styles.vege}>Others... (if applicable)</Text>
             <Picker
-            // selectedValue={selectedValue}
-
-            // onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+                selectedotherValue={other}
+                onValueChange={(itemValue, itemIndex) => setOther(itemValue)}
             >
                 <Picker.Item label="--- select Others ---" value="NULL" />
                 <Picker.Item label="Brandy" value="brandy" />
@@ -198,19 +191,16 @@ export default function IngredientsScreen({ navigation }) {
                 <Picker.Item label="Whipping Cream" value="whipping cream" />
                 <Picker.Item label="White Wine" value="white wine" />
                 <Picker.Item label="NOT APPLICABLE" value="NULL" />
-
-
-
-
-
             </Picker>
 
-            <Button style={styles.buttonStyle} title="Find possible recipes!" onPress={() => {
-                navigation.navigate('List');
-            }} />
-            <StatusBar style="auto" />
-        </View>);
-    // };
+            <Button
+                style={styles.buttonStyle}
+                title="Find possible recipes!"
+                onPress={() => {
+                    navigation.navigate('List');
+                }} />
+        </View>
+    );
 }
 
 
@@ -243,5 +233,3 @@ const styles = StyleSheet.create({
     },
 
 });
-
-
